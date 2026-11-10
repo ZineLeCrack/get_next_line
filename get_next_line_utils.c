@@ -6,7 +6,7 @@
 /*   By: rlebaill <rlebaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:45 by rlebaill          #+#    #+#             */
-/*   Updated: 2024/11/05 18:27:06 by rlebaill         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:16:21 by rlebaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	if (!s1)
-		s1 = "";
-	if (!s2)
-		s2 = "";
 	str = malloc((ft_strlen((char *)s1) + ft_strlen((char *)s2)) + 1);
 	if (!str)
 		return (NULL);
@@ -73,7 +69,7 @@ char	*ft_strdup(const char *src)
 
 	i = 0;
 	dest = malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (dest == NULL)
+	if (!dest)
 		return (NULL);
 	while (src[i])
 	{
@@ -84,22 +80,15 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-void	ft_strcpy(char *buff, char *new_buff)
+void	ft_strcpy(char *dest, char *src)
 {
 	int	i;
 
-	if (!new_buff)
-		return ;
 	i = 0;
-	while (i < BUFFER_SIZE)
+	while (src[i])
 	{
-		buff[i] = '\0';
+		dest[i] = src[i];
 		i++;
 	}
-	i = 0;
-	while (new_buff[i] && i < BUFFER_SIZE)
-	{
-		buff[i] = new_buff[i];
-		i++;
-	}
+	dest[i] = '\0';
 }
