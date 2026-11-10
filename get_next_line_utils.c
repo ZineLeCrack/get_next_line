@@ -6,13 +6,13 @@
 /*   By: rlebaill <rlebaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:03:45 by rlebaill          #+#    #+#             */
-/*   Updated: 2026/11/10 09:16:21 by rlebaill         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:58:34 by rlebaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+static size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 

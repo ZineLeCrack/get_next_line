@@ -6,7 +6,7 @@
 /*   By: rlebaill <rlebaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:57:45 by rlebaill          #+#    #+#             */
-/*   Updated: 2026/11/10 09:28:37 by rlebaill         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:04:10 by rlebaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 char	*read_file(int fd, char *buff)
 {
-	char	tmp[BUFFER_SIZE + 1];
+	char	*tmp;
 	char	*line;
 	char	*new_line;
 	ssize_t	bytes_read;
 
+	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!tmp)
+		return (NULL);
 	line = ft_strdup(buff);
 	if (!line)
-		return (NULL);
+		return (free(tmp), NULL);
 	while (!ft_strchr(line, '\n'))
 	{
 		bytes_read = read(fd, tmp, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (free(line), NULL);
+			return (free(tmp), free(line), NULL);
 		if (bytes_read == 0)
-			return (line);
+			return (free(tmp), line);
 		tmp[bytes_read] = '\0';
 		new_line = ft_strjoin(line, tmp);
-		free(line);
 		if (!new_line)
-			return (NULL);
-		line = new_line;
+			return (free(line), free(tmp), NULL);
+		(free(line), line = new_line);
 	}
-	return (line);
+	return (free(tmp), line);
 }
 
 char	*get_next_line(int fd)

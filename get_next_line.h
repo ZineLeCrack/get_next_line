@@ -6,7 +6,7 @@
 /*   By: rlebaill <rlebaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:58:44 by rlebaill          #+#    #+#             */
-/*   Updated: 2024/11/05 17:00:03 by rlebaill         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:58:48 by rlebaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 char	*get_next_line(int fd);
 
 char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *src);
 void	ft_strcpy(char *buf, char *new_buf);
